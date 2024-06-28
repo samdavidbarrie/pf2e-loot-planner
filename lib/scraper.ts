@@ -2,7 +2,6 @@ import { Client } from '@elastic/elasticsearch'
 import fs from 'fs'
 import path from 'path'
 import { config } from './utils'
-import sanitize from 'sanitize-filename'
 
 const tracking: { [key: string]: boolean } = {}
 
@@ -97,7 +96,7 @@ export async function sortTargets() {
   for (const target of config.targets.sort()) {
     console.log({ action: 'sorting', target })
 
-    if (tracking[target] === true) {
+    if (tracking[target]) {
       const parsed = JSON.parse(
         fs.readFileSync(
           path.join('lib/json', 'parsed', `${target}.json`),
@@ -111,12 +110,7 @@ export async function sortTargets() {
           })
 
           fs.writeFileSync(
-            path.join(
-              'lib/json',
-              'sorted',
-              `${target}`,
-              `${sanitize(entry?.name)}.json`
-            ),
+            path.join('lib/json', 'sorted', `${target}`, `${entry?.name}.json`),
             JSON.stringify(entry, null, ' ')
           )
         } catch (err) {

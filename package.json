@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "scrape": "node lib/scraper.ts"
+    "scrape": "node lib/scraper.ts",
+    "parses": "node lib/parser.ts"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^8.14.0",

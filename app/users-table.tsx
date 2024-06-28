@@ -25,6 +25,20 @@ export function UsersTable({
   function onClick() {
     router.replace(`/?offset=${offset}`);
   }
+  // # Players
+  // Expected Player Level
+  // Book
+  // Part
+  // Encounter
+  // AON
+  // Qty
+  // Item
+  // Level
+  // Unt. Value
+  // Total Value
+  // Acquired from
+  // Observation
+  // Traits
 
   return (
     <>
